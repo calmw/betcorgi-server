@@ -420,3 +420,37 @@ func (c Game) AutoBetTest() {
 		time.Sleep(10 * time.Second)
 	}
 }
+
+func (c Game) AdminSetBetSwitch() {
+
+	var res *types.Transaction
+	for i := 0; i < 22; i++ {
+		for {
+			txOpts, err := GetAuth(c.Cli)
+			if err != nil {
+				log.Println(err)
+				return
+			}
+			res, err = c.Contract.AdminSetBetSwitch(
+				txOpts,
+				big.NewInt(int64(i)),
+				true)
+			if err == nil {
+				break
+			}
+			log.Println("admin set bet switch error:", err)
+			time.Sleep(3 * time.Second)
+		}
+		log.Println(fmt.Sprintf("成功"))
+		for {
+			receipt, err := c.Cli.TransactionReceipt(context.Background(), res.Hash())
+			if err == nil && receipt.Status == 1 {
+				log.Println("开奖：", res.Hash())
+				break
+			}
+			time.Sleep(time.Second * 2)
+		}
+
+		log.Println(fmt.Sprintf("确认成功"))
+	}
+}
