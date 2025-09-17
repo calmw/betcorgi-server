@@ -41,8 +41,8 @@ func NewToken() (*Token, error) {
 }
 
 func (c Token) TokenInit() {
-	c.AdminSetTokenExchangeRate()
-	//c.AdminSetToken()
+	//c.AdminSetTokenExchangeRate()
+	c.AdminSetToken()
 }
 
 func (c Token) AdminSetToken() {

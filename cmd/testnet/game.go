@@ -17,12 +17,12 @@ func main() {
 	//}
 	//fee.FeeInit()
 
-	//token, err := blockchain.NewToken()
-	//if err != nil {
-	//	log.Println(err)
-	//	return
-	//}
-	//token.TokenInit()
+	token, err := blockchain.NewToken()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	token.TokenInit()
 
 	//gameCategory, err := blockchain.NewGameCategory()
 	//if err != nil {
@@ -46,13 +46,13 @@ func main() {
 	//}
 	//autoBet.AutoBetInit()
 
-	game, err := blockchain.NewGame()
-	if err != nil {
-		log.Println(err)
-		return
-	}
+	//game, err := blockchain.NewGame()
+	//if err != nil {
+	//	log.Println(err)
+	//	return
+	//}
 	////game.AutoBetTest()
-	game.AdminSetBetSwitch()
+	//game.AdminSetBetSwitch()
 	//game.GameInit()
 	//game.BetTest(16, 1, 1000000)
 	//game.BetSingle(4, 1, 1000000, "0x581d44f5a4fd2e33aa631605bfed5bcdf82a14c248c441a2a02d99a363b9c0e4", "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000777b226973496e223a747275652c2270726564696374696f6e52616e6765223a5b323034352c363530335d2c2268617368223a22307835383164343466356134666432653333616136333136303562666564356263646638326131346332343863343431613261303264393961333633623963306534227d000000000000000000")
