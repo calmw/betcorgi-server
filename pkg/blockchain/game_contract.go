@@ -13,6 +13,7 @@ import (
 	"io"
 	"log"
 	"math/big"
+	random "math/rand"
 	"strings"
 	"time"
 )
@@ -375,27 +376,28 @@ func (c Game) BetTest(gameId, tokenId, amount int64, dataHex string) {
 func (c Game) BetSingle(gameId, tokenId, amount int64, hashStr, dataHex string) {
 	order, _ := NewOrder()
 	orderId := order.GetNewOrderId().Int64()
-	for i := 0; i < 2; i++ {
-		c.Bet(
-			gameId,
-			tokenId,
-			amount,
-			hashStr,
-			dataHex,
-		)
-		hashExpired := i%2 == 0
-		log.Println("hashExpired:", hashExpired)
-		//c.Draw(
-		//	1,
-		//	orderId,
-		//	hashStr,
-		//	"a49807205ce4d355092ef5a8a",
-		//	2,
-		//	hashExpired,
-		//)
-		//time.Sleep(10 * time.Second)
-		orderId++
-	}
+	c.Bet(
+		gameId,
+		tokenId,
+		amount,
+		hashStr,
+		dataHex,
+	)
+	r := random.New(random.NewSource(time.Now().UnixNano()))
+
+	// 生成一个 0 到 99 的随机整数
+	n := r.Intn(100)
+	fmt.Println("随机数:", n)
+	hashExpired := n%2 == 0
+	log.Println("hashExpired:", hashExpired)
+	c.Draw(
+		1,
+		orderId,
+		hashStr,
+		2,
+		hashExpired,
+	)
+	time.Sleep(10 * time.Second)
 }
 
 func (c Game) AutoBetTest() {
@@ -424,6 +426,7 @@ func (c Game) AutoBetTest() {
 func (c Game) AdminSetBetSwitch() {
 
 	var res *types.Transaction
+	//loopStart:
 	for i := 0; i < 22; i++ {
 		for {
 			txOpts, err := GetAuth(c.Cli)
@@ -445,7 +448,7 @@ func (c Game) AdminSetBetSwitch() {
 		for {
 			receipt, err := c.Cli.TransactionReceipt(context.Background(), res.Hash())
 			if err == nil && receipt.Status == 1 {
-				log.Println("开奖：", res.Hash())
+				log.Println(fmt.Sprintf("确认,游戏ID %d, hash：%s", i, res.Hash()))
 				break
 			}
 			time.Sleep(time.Second * 2)
