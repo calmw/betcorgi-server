@@ -46,7 +46,6 @@ func (c Order) AdminSetEnv() {
 		}
 		res, err = c.Contract.AdminSetEnv(
 			txOpts,
-			common.HexToAddress(ChainConfig.FeeContractAddress),
 			common.HexToAddress(ChainConfig.GameContractAddress),
 			common.HexToAddress(ChainConfig.AutoBetContractAddress),
 			common.HexToAddress(ChainConfig.GameCategoryContractAddress),

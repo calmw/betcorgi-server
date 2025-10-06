@@ -253,11 +253,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "feeAddress_",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "gameAddress_",
         "type": "address"
       },
@@ -375,7 +370,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "rate_",
+        "name": "amount_",
         "type": "uint256"
       },
       {
