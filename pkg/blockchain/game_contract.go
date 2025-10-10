@@ -15,6 +15,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/status-im/keycard-go/hexutils"
 )
@@ -41,7 +42,15 @@ func NewGame() (*Game, error) {
 
 func (c Game) GameInit() {
 	fmt.Println("GameInit 开始")
-	c.AddAccess()
+	prvKey, err := crypto.HexToECDSA(ChainConfig.PrivateKey)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	address := crypto.PubkeyToAddress(prvKey.PublicKey)
+	c.GrantRole(ServerRole, address.String())
+	c.GrantRole(AdminRole, ChainConfig.OrderContractAddress)
+	c.GrantRole(AdminRole, ChainConfig.AutoBetContractAddress)
 	c.AdminSetBetSwitch()
 	c.AdminSetEnv(
 		ChainConfig.TokenContractAddress,
@@ -52,8 +61,8 @@ func (c Game) GameInit() {
 	)
 }
 
-func (c Game) AddAccess() {
-	AdminRoleBytes := hexutils.HexToBytes(AdminRole)
+func (c Game) GrantRole(role, account string) {
+	roleBytes := hexutils.HexToBytes(role)
 
 	var res *types.Transaction
 
@@ -63,7 +72,7 @@ func (c Game) AddAccess() {
 			log.Println(err)
 			return
 		}
-		res, err = c.Contract.GrantRole(txOpts, [32]byte(AdminRoleBytes), common.HexToAddress(ChainConfig.OrderContractAddress))
+		res, err = c.Contract.GrantRole(txOpts, [32]byte(roleBytes), common.HexToAddress(account))
 		if err == nil {
 			break
 		}
@@ -79,7 +88,11 @@ func (c Game) AddAccess() {
 		time.Sleep(time.Second * 2)
 	}
 
-	log.Println(fmt.Sprintf("确认成功"))
+}
+
+func (c Game) BindParent(account string) {
+
+	var res *types.Transaction
 
 	for {
 		txOpts, err := GetAuth(c.Cli)
@@ -87,7 +100,7 @@ func (c Game) AddAccess() {
 			log.Println(err)
 			return
 		}
-		res, err = c.Contract.GrantRole(txOpts, [32]byte(AdminRoleBytes), common.HexToAddress(ChainConfig.AutoBetContractAddress))
+		res, err = c.Contract.BindParent(txOpts, common.HexToAddress(account))
 		if err == nil {
 			break
 		}
@@ -422,15 +435,13 @@ func (c Game) AutoBetTest() {
 }
 
 func (c Game) AdminSetBetSwitch() {
-
 	var res *types.Transaction
-	//loopStart:
 	for i := 0; i < 22; i++ {
 		for {
 			txOpts, err := GetAuth(c.Cli)
 			if err != nil {
 				log.Println(err)
-				return
+				continue
 			}
 			res, err = c.Contract.AdminSetBetSwitch(
 				txOpts,

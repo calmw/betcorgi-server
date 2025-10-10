@@ -51,12 +51,12 @@ func (c Token) TokenInit() {
 		return
 	}
 	address := crypto.PubkeyToAddress(prvKey.PublicKey)
-	c.AddAccess(AdminRole, address.String())
+	c.GrantRole(AdminRole, address.String())
 	c.AdminSetTokenExchangeRate()
 	c.AdminSetToken()
 }
 
-func (c Token) AddAccess(role, account string) {
+func (c Token) GrantRole(role, account string) {
 	roleBytes := hexutils.HexToBytes(role)
 
 	var res *types.Transaction

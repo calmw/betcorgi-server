@@ -37,10 +37,10 @@ func NewAutoBet() (*AutoBet, error) {
 func (c AutoBet) AutoBetInit() {
 	fmt.Println("AutoBetInit 开始")
 	c.AdminSetEnv(false) // 默认关闭了自动下注
-	c.AddAccess()
+	c.GrantRole()
 }
 
-func (c AutoBet) AddAccess() {
+func (c AutoBet) GrantRole() {
 	AdminRoleBytes := hexutils.HexToBytes(AdminRole)
 
 	var res *types.Transaction

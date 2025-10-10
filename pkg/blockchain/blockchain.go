@@ -20,7 +20,7 @@ const (
 	LayoutTime = "2006-01-02 15:04:05"
 	AdminRole  = "a49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775"
 	ServerRole = "a8a7bc421f721cb936ea99efdad79237e6ee0b871a2a08cf648691f9584cdc77"
-	ManageRole = "a8a7bc421f721cb936ea99efdad79237e6ee0b871a2a08cf648691f9584cdc77"
+	ManageRole = "a076a07f65bcd51bcb15a0f01a65bc18f2d922acb81bcfd8af4caf5adb557091"
 )
 
 type ChainConfigs struct {

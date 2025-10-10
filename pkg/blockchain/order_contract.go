@@ -118,10 +118,10 @@ func (c Order) GetLog(startHeight, endHeight *big.Int) {
 func (c Order) OrderInit() {
 	fmt.Println("OrderInit 开始")
 	c.AdminSetEnv()
-	c.AddAccess(AdminRole, ChainConfig.GameContractAddress)
+	c.GrantRole(AdminRole, ChainConfig.GameContractAddress)
 }
 
-func (c Order) AddAccess(role, account string) {
+func (c Order) GrantRole(role, account string) {
 	roleBytes := hexutils.HexToBytes(role)
 
 	var res *types.Transaction
