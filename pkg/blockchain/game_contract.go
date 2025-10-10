@@ -5,17 +5,18 @@ import (
 	"context"
 	"crypto/rand"
 	"fmt"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/status-im/keycard-go/hexutils"
 	"io"
 	"log"
 	"math/big"
 	random "math/rand"
 	"strings"
 	"time"
+
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/status-im/keycard-go/hexutils"
 )
 
 type Game struct {
@@ -41,11 +42,9 @@ func NewGame() (*Game, error) {
 func (c Game) GameInit() {
 	c.AddAccess()
 	c.AdminSetEnv(
-		ChainConfig.FeeContractAddress,
 		ChainConfig.TokenContractAddress,
 		ChainConfig.OrderContractAddress,
 		ChainConfig.AutoBetContractAddress,
-		ChainConfig.JackPotContractAddress,
 		ChainConfig.GameCategoryContractAddress,
 		true,
 	)
@@ -106,7 +105,7 @@ func (c Game) AddAccess() {
 	log.Println(fmt.Sprintf("确认成功"))
 }
 
-func (c Game) AdminSetEnv(feeAddress, tokenAddress, orderAddress, autoBetAddress, jackPotAddress, gameCategoryAddress string, betSwitch bool) {
+func (c Game) AdminSetEnv(tokenAddress, orderAddress, autoBetAddress, gameCategoryAddress string, betSwitch bool) {
 	var res *types.Transaction
 	for {
 		txOpts, err := GetAuth(c.Cli)
@@ -116,11 +115,9 @@ func (c Game) AdminSetEnv(feeAddress, tokenAddress, orderAddress, autoBetAddress
 		}
 		res, err = c.Contract.AdminSetEnv(
 			txOpts,
-			common.HexToAddress(feeAddress),
 			common.HexToAddress(tokenAddress),
 			common.HexToAddress(orderAddress),
 			common.HexToAddress(autoBetAddress),
-			common.HexToAddress(jackPotAddress),
 			common.HexToAddress(gameCategoryAddress),
 			betSwitch,
 		)

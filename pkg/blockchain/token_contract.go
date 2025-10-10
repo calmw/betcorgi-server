@@ -4,12 +4,15 @@ import (
 	"betcorgi/pkg/binding/corgi"
 	"context"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 	"math/big"
 	"time"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/status-im/keycard-go/hexutils"
 )
 
 type TokenInfo struct {
@@ -41,8 +44,44 @@ func NewToken() (*Token, error) {
 }
 
 func (c Token) TokenInit() {
-	//c.AdminSetTokenExchangeRate()
+	prvKey, err := crypto.HexToECDSA(ChainConfig.PrivateKey)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	address := crypto.PubkeyToAddress(prvKey.PublicKey)
+	c.AddAccess(AdminRole, address.String())
+	c.AdminSetTokenExchangeRate()
 	c.AdminSetToken()
+}
+
+func (c Token) AddAccess(role, account string) {
+	roleBytes := hexutils.HexToBytes(role)
+
+	var res *types.Transaction
+
+	for {
+		txOpts, err := GetAuth(c.Cli)
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		res, err = c.Contract.GrantRole(txOpts, [32]byte(roleBytes), common.HexToAddress(account))
+		if err == nil {
+			break
+		}
+		time.Sleep(3 * time.Second)
+	}
+	log.Println(fmt.Sprintf("成功"))
+	for {
+		receipt, err := c.Cli.TransactionReceipt(context.Background(), res.Hash())
+		if err == nil && receipt.Status == 1 {
+			break
+		}
+		time.Sleep(time.Second * 2)
+	}
+
+	log.Println(fmt.Sprintf("确认成功"))
 }
 
 func (c Token) AdminSetToken() {

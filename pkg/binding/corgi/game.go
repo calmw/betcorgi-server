@@ -31,7 +31,7 @@ var (
 
 // GameMetaData contains all meta data concerning the Game contract.
 var GameMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"AccessControlBadConfirmation\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"neededRole\",\"type\":\"bytes32\"}],\"name\":\"AccessControlUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"FailedCall\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"needed\",\"type\":\"uint256\"}],\"name\":\"InsufficientBalance\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidInitialization\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotInitializing\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"BindParentEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"version\",\"type\":\"uint64\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"WithdrawalEvent\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MANAGE_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SERVER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gameId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"betSwitch_\",\"type\":\"bool\"}],\"name\":\"admin_set_bet_switch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"feeAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"orderAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"autoBetAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"jackPotAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"gameCategoryAddress_\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"betSwitch_\",\"type\":\"bool\"}],\"name\":\"admin_set_env\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"auto_\",\"outputs\":[{\"internalType\":\"contractIAutoBet\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"token_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"initial_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"auto_set\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes32[]\",\"name\":\"hashArr\",\"type\":\"bytes32[]\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"auto_bet\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"token_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"bet\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"betSingleSwitch\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"betSwitch\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user_address\",\"type\":\"address\"}],\"name\":\"bind_parent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"changeUserBalance\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"order_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"seed\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"hash_expired\",\"type\":\"bool\"}],\"name\":\"draw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"drawData\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"auto_id\",\"type\":\"uint256\"},{\"internalType\":\"string[]\",\"name\":\"seed\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"rate\",\"type\":\"uint256[]\"},{\"internalType\":\"bool[]\",\"name\":\"hash_expired\",\"type\":\"bool[]\"}],\"name\":\"draw_auto_bet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"game_id\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"order_id\",\"type\":\"uint256[]\"},{\"internalType\":\"string[]\",\"name\":\"seed\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"rate\",\"type\":\"uint256[]\"},{\"internalType\":\"bool[]\",\"name\":\"hash_expired\",\"type\":\"bool[]\"}],\"name\":\"draw_batch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fee\",\"outputs\":[{\"internalType\":\"contractIFee\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gameCategory\",\"outputs\":[{\"internalType\":\"contractIGameCategory\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"hasBind\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"jackPot\",\"outputs\":[{\"internalType\":\"contractIJackpot\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"order\",\"outputs\":[{\"internalType\":\"contractIOrder\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"callerConfirmation\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contractIToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"userOrders\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userParent\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"userSons\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"token_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdrawal\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}]",
+	ABI: "[{\"inputs\":[],\"name\":\"AccessControlBadConfirmation\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"neededRole\",\"type\":\"bytes32\"}],\"name\":\"AccessControlUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"FailedCall\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"needed\",\"type\":\"uint256\"}],\"name\":\"InsufficientBalance\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidInitialization\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotInitializing\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"BindParentEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"version\",\"type\":\"uint64\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"WithdrawalEvent\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MANAGE_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SERVER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gameId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"betSwitch_\",\"type\":\"bool\"}],\"name\":\"admin_set_bet_switch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"orderAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"autoBetAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"gameCategoryAddress_\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"betSwitch_\",\"type\":\"bool\"}],\"name\":\"admin_set_env\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"auto_\",\"outputs\":[{\"internalType\":\"contractIAutoBet\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"token_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"initial_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"auto_set\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes32[]\",\"name\":\"hashArr\",\"type\":\"bytes32[]\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"auto_bet\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"token_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"bet\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"betSingleSwitch\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"betSwitch\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user_address\",\"type\":\"address\"}],\"name\":\"bind_parent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"changeUserBalance\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"order_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"seed\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"hash_expired\",\"type\":\"bool\"}],\"name\":\"draw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"drawData\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"game_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"auto_id\",\"type\":\"uint256\"},{\"internalType\":\"string[]\",\"name\":\"seed\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"rate\",\"type\":\"uint256[]\"},{\"internalType\":\"bool[]\",\"name\":\"hash_expired\",\"type\":\"bool[]\"}],\"name\":\"draw_auto_bet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"game_id\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"order_id\",\"type\":\"uint256[]\"},{\"internalType\":\"string[]\",\"name\":\"seed\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"amount\",\"type\":\"uint256[]\"},{\"internalType\":\"bool[]\",\"name\":\"hash_expired\",\"type\":\"bool[]\"}],\"name\":\"draw_batch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gameCategory\",\"outputs\":[{\"internalType\":\"contractIGameCategory\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"hasBind\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"order\",\"outputs\":[{\"internalType\":\"contractIOrder\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"callerConfirmation\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contractIToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"userOrders\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"token_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdrawal\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}]",
 }
 
 // GameABI is the input ABI used to generate the binding from.
@@ -428,37 +428,6 @@ func (_Game *GameCallerSession) DrawData(arg0 *big.Int) (*big.Int, error) {
 	return _Game.Contract.DrawData(&_Game.CallOpts, arg0)
 }
 
-// Fee is a free data retrieval call binding the contract method 0xddca3f43.
-//
-// Solidity: function fee() view returns(address)
-func (_Game *GameCaller) Fee(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _Game.contract.Call(opts, &out, "fee")
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// Fee is a free data retrieval call binding the contract method 0xddca3f43.
-//
-// Solidity: function fee() view returns(address)
-func (_Game *GameSession) Fee() (common.Address, error) {
-	return _Game.Contract.Fee(&_Game.CallOpts)
-}
-
-// Fee is a free data retrieval call binding the contract method 0xddca3f43.
-//
-// Solidity: function fee() view returns(address)
-func (_Game *GameCallerSession) Fee() (common.Address, error) {
-	return _Game.Contract.Fee(&_Game.CallOpts)
-}
-
 // GameCategory is a free data retrieval call binding the contract method 0x816928f0.
 //
 // Solidity: function gameCategory() view returns(address)
@@ -581,37 +550,6 @@ func (_Game *GameSession) HasRole(role [32]byte, account common.Address) (bool, 
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
 func (_Game *GameCallerSession) HasRole(role [32]byte, account common.Address) (bool, error) {
 	return _Game.Contract.HasRole(&_Game.CallOpts, role, account)
-}
-
-// JackPot is a free data retrieval call binding the contract method 0x4a78cdba.
-//
-// Solidity: function jackPot() view returns(address)
-func (_Game *GameCaller) JackPot(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _Game.contract.Call(opts, &out, "jackPot")
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// JackPot is a free data retrieval call binding the contract method 0x4a78cdba.
-//
-// Solidity: function jackPot() view returns(address)
-func (_Game *GameSession) JackPot() (common.Address, error) {
-	return _Game.Contract.JackPot(&_Game.CallOpts)
-}
-
-// JackPot is a free data retrieval call binding the contract method 0x4a78cdba.
-//
-// Solidity: function jackPot() view returns(address)
-func (_Game *GameCallerSession) JackPot() (common.Address, error) {
-	return _Game.Contract.JackPot(&_Game.CallOpts)
 }
 
 // Order is a free data retrieval call binding the contract method 0xbf15071d.
@@ -738,68 +676,6 @@ func (_Game *GameCallerSession) UserOrders(arg0 common.Address, arg1 *big.Int) (
 	return _Game.Contract.UserOrders(&_Game.CallOpts, arg0, arg1)
 }
 
-// UserParent is a free data retrieval call binding the contract method 0x0dfcaac6.
-//
-// Solidity: function userParent(address ) view returns(address)
-func (_Game *GameCaller) UserParent(opts *bind.CallOpts, arg0 common.Address) (common.Address, error) {
-	var out []interface{}
-	err := _Game.contract.Call(opts, &out, "userParent", arg0)
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// UserParent is a free data retrieval call binding the contract method 0x0dfcaac6.
-//
-// Solidity: function userParent(address ) view returns(address)
-func (_Game *GameSession) UserParent(arg0 common.Address) (common.Address, error) {
-	return _Game.Contract.UserParent(&_Game.CallOpts, arg0)
-}
-
-// UserParent is a free data retrieval call binding the contract method 0x0dfcaac6.
-//
-// Solidity: function userParent(address ) view returns(address)
-func (_Game *GameCallerSession) UserParent(arg0 common.Address) (common.Address, error) {
-	return _Game.Contract.UserParent(&_Game.CallOpts, arg0)
-}
-
-// UserSons is a free data retrieval call binding the contract method 0xaa836bd7.
-//
-// Solidity: function userSons(address , uint256 ) view returns(address)
-func (_Game *GameCaller) UserSons(opts *bind.CallOpts, arg0 common.Address, arg1 *big.Int) (common.Address, error) {
-	var out []interface{}
-	err := _Game.contract.Call(opts, &out, "userSons", arg0, arg1)
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// UserSons is a free data retrieval call binding the contract method 0xaa836bd7.
-//
-// Solidity: function userSons(address , uint256 ) view returns(address)
-func (_Game *GameSession) UserSons(arg0 common.Address, arg1 *big.Int) (common.Address, error) {
-	return _Game.Contract.UserSons(&_Game.CallOpts, arg0, arg1)
-}
-
-// UserSons is a free data retrieval call binding the contract method 0xaa836bd7.
-//
-// Solidity: function userSons(address , uint256 ) view returns(address)
-func (_Game *GameCallerSession) UserSons(arg0 common.Address, arg1 *big.Int) (common.Address, error) {
-	return _Game.Contract.UserSons(&_Game.CallOpts, arg0, arg1)
-}
-
 // AdminSetBetSwitch is a paid mutator transaction binding the contract method 0x5887c2b0.
 //
 // Solidity: function admin_set_bet_switch(uint256 gameId, bool betSwitch_) returns()
@@ -821,25 +697,25 @@ func (_Game *GameTransactorSession) AdminSetBetSwitch(gameId *big.Int, betSwitch
 	return _Game.Contract.AdminSetBetSwitch(&_Game.TransactOpts, gameId, betSwitch_)
 }
 
-// AdminSetEnv is a paid mutator transaction binding the contract method 0x0fd29359.
+// AdminSetEnv is a paid mutator transaction binding the contract method 0x32d0ae50.
 //
-// Solidity: function admin_set_env(address feeAddress_, address tokenAddress_, address orderAddress_, address autoBetAddress_, address jackPotAddress_, address gameCategoryAddress_, bool betSwitch_) returns()
-func (_Game *GameTransactor) AdminSetEnv(opts *bind.TransactOpts, feeAddress_ common.Address, tokenAddress_ common.Address, orderAddress_ common.Address, autoBetAddress_ common.Address, jackPotAddress_ common.Address, gameCategoryAddress_ common.Address, betSwitch_ bool) (*types.Transaction, error) {
-	return _Game.contract.Transact(opts, "admin_set_env", feeAddress_, tokenAddress_, orderAddress_, autoBetAddress_, jackPotAddress_, gameCategoryAddress_, betSwitch_)
+// Solidity: function admin_set_env(address tokenAddress_, address orderAddress_, address autoBetAddress_, address gameCategoryAddress_, bool betSwitch_) returns()
+func (_Game *GameTransactor) AdminSetEnv(opts *bind.TransactOpts, tokenAddress_ common.Address, orderAddress_ common.Address, autoBetAddress_ common.Address, gameCategoryAddress_ common.Address, betSwitch_ bool) (*types.Transaction, error) {
+	return _Game.contract.Transact(opts, "admin_set_env", tokenAddress_, orderAddress_, autoBetAddress_, gameCategoryAddress_, betSwitch_)
 }
 
-// AdminSetEnv is a paid mutator transaction binding the contract method 0x0fd29359.
+// AdminSetEnv is a paid mutator transaction binding the contract method 0x32d0ae50.
 //
-// Solidity: function admin_set_env(address feeAddress_, address tokenAddress_, address orderAddress_, address autoBetAddress_, address jackPotAddress_, address gameCategoryAddress_, bool betSwitch_) returns()
-func (_Game *GameSession) AdminSetEnv(feeAddress_ common.Address, tokenAddress_ common.Address, orderAddress_ common.Address, autoBetAddress_ common.Address, jackPotAddress_ common.Address, gameCategoryAddress_ common.Address, betSwitch_ bool) (*types.Transaction, error) {
-	return _Game.Contract.AdminSetEnv(&_Game.TransactOpts, feeAddress_, tokenAddress_, orderAddress_, autoBetAddress_, jackPotAddress_, gameCategoryAddress_, betSwitch_)
+// Solidity: function admin_set_env(address tokenAddress_, address orderAddress_, address autoBetAddress_, address gameCategoryAddress_, bool betSwitch_) returns()
+func (_Game *GameSession) AdminSetEnv(tokenAddress_ common.Address, orderAddress_ common.Address, autoBetAddress_ common.Address, gameCategoryAddress_ common.Address, betSwitch_ bool) (*types.Transaction, error) {
+	return _Game.Contract.AdminSetEnv(&_Game.TransactOpts, tokenAddress_, orderAddress_, autoBetAddress_, gameCategoryAddress_, betSwitch_)
 }
 
-// AdminSetEnv is a paid mutator transaction binding the contract method 0x0fd29359.
+// AdminSetEnv is a paid mutator transaction binding the contract method 0x32d0ae50.
 //
-// Solidity: function admin_set_env(address feeAddress_, address tokenAddress_, address orderAddress_, address autoBetAddress_, address jackPotAddress_, address gameCategoryAddress_, bool betSwitch_) returns()
-func (_Game *GameTransactorSession) AdminSetEnv(feeAddress_ common.Address, tokenAddress_ common.Address, orderAddress_ common.Address, autoBetAddress_ common.Address, jackPotAddress_ common.Address, gameCategoryAddress_ common.Address, betSwitch_ bool) (*types.Transaction, error) {
-	return _Game.Contract.AdminSetEnv(&_Game.TransactOpts, feeAddress_, tokenAddress_, orderAddress_, autoBetAddress_, jackPotAddress_, gameCategoryAddress_, betSwitch_)
+// Solidity: function admin_set_env(address tokenAddress_, address orderAddress_, address autoBetAddress_, address gameCategoryAddress_, bool betSwitch_) returns()
+func (_Game *GameTransactorSession) AdminSetEnv(tokenAddress_ common.Address, orderAddress_ common.Address, autoBetAddress_ common.Address, gameCategoryAddress_ common.Address, betSwitch_ bool) (*types.Transaction, error) {
+	return _Game.Contract.AdminSetEnv(&_Game.TransactOpts, tokenAddress_, orderAddress_, autoBetAddress_, gameCategoryAddress_, betSwitch_)
 }
 
 // AutoBet is a paid mutator transaction binding the contract method 0x1f310457.
@@ -928,23 +804,23 @@ func (_Game *GameTransactorSession) ChangeUserBalance(user common.Address, token
 
 // Draw is a paid mutator transaction binding the contract method 0x25b7c593.
 //
-// Solidity: function draw(uint256 game_id, uint256 order_id, string seed, uint256 rate, bool hash_expired) returns()
-func (_Game *GameTransactor) Draw(opts *bind.TransactOpts, game_id *big.Int, order_id *big.Int, seed string, rate *big.Int, hash_expired bool) (*types.Transaction, error) {
-	return _Game.contract.Transact(opts, "draw", game_id, order_id, seed, rate, hash_expired)
+// Solidity: function draw(uint256 game_id, uint256 order_id, string seed, uint256 amount, bool hash_expired) returns()
+func (_Game *GameTransactor) Draw(opts *bind.TransactOpts, game_id *big.Int, order_id *big.Int, seed string, amount *big.Int, hash_expired bool) (*types.Transaction, error) {
+	return _Game.contract.Transact(opts, "draw", game_id, order_id, seed, amount, hash_expired)
 }
 
 // Draw is a paid mutator transaction binding the contract method 0x25b7c593.
 //
-// Solidity: function draw(uint256 game_id, uint256 order_id, string seed, uint256 rate, bool hash_expired) returns()
-func (_Game *GameSession) Draw(game_id *big.Int, order_id *big.Int, seed string, rate *big.Int, hash_expired bool) (*types.Transaction, error) {
-	return _Game.Contract.Draw(&_Game.TransactOpts, game_id, order_id, seed, rate, hash_expired)
+// Solidity: function draw(uint256 game_id, uint256 order_id, string seed, uint256 amount, bool hash_expired) returns()
+func (_Game *GameSession) Draw(game_id *big.Int, order_id *big.Int, seed string, amount *big.Int, hash_expired bool) (*types.Transaction, error) {
+	return _Game.Contract.Draw(&_Game.TransactOpts, game_id, order_id, seed, amount, hash_expired)
 }
 
 // Draw is a paid mutator transaction binding the contract method 0x25b7c593.
 //
-// Solidity: function draw(uint256 game_id, uint256 order_id, string seed, uint256 rate, bool hash_expired) returns()
-func (_Game *GameTransactorSession) Draw(game_id *big.Int, order_id *big.Int, seed string, rate *big.Int, hash_expired bool) (*types.Transaction, error) {
-	return _Game.Contract.Draw(&_Game.TransactOpts, game_id, order_id, seed, rate, hash_expired)
+// Solidity: function draw(uint256 game_id, uint256 order_id, string seed, uint256 amount, bool hash_expired) returns()
+func (_Game *GameTransactorSession) Draw(game_id *big.Int, order_id *big.Int, seed string, amount *big.Int, hash_expired bool) (*types.Transaction, error) {
+	return _Game.Contract.Draw(&_Game.TransactOpts, game_id, order_id, seed, amount, hash_expired)
 }
 
 // DrawAutoBet is a paid mutator transaction binding the contract method 0x813cdc6a.
@@ -970,23 +846,23 @@ func (_Game *GameTransactorSession) DrawAutoBet(game_id *big.Int, auto_id *big.I
 
 // DrawBatch is a paid mutator transaction binding the contract method 0xaaeddeaa.
 //
-// Solidity: function draw_batch(uint256[] game_id, uint256[] order_id, string[] seed, uint256[] rate, bool[] hash_expired) returns()
-func (_Game *GameTransactor) DrawBatch(opts *bind.TransactOpts, game_id []*big.Int, order_id []*big.Int, seed []string, rate []*big.Int, hash_expired []bool) (*types.Transaction, error) {
-	return _Game.contract.Transact(opts, "draw_batch", game_id, order_id, seed, rate, hash_expired)
+// Solidity: function draw_batch(uint256[] game_id, uint256[] order_id, string[] seed, uint256[] amount, bool[] hash_expired) returns()
+func (_Game *GameTransactor) DrawBatch(opts *bind.TransactOpts, game_id []*big.Int, order_id []*big.Int, seed []string, amount []*big.Int, hash_expired []bool) (*types.Transaction, error) {
+	return _Game.contract.Transact(opts, "draw_batch", game_id, order_id, seed, amount, hash_expired)
 }
 
 // DrawBatch is a paid mutator transaction binding the contract method 0xaaeddeaa.
 //
-// Solidity: function draw_batch(uint256[] game_id, uint256[] order_id, string[] seed, uint256[] rate, bool[] hash_expired) returns()
-func (_Game *GameSession) DrawBatch(game_id []*big.Int, order_id []*big.Int, seed []string, rate []*big.Int, hash_expired []bool) (*types.Transaction, error) {
-	return _Game.Contract.DrawBatch(&_Game.TransactOpts, game_id, order_id, seed, rate, hash_expired)
+// Solidity: function draw_batch(uint256[] game_id, uint256[] order_id, string[] seed, uint256[] amount, bool[] hash_expired) returns()
+func (_Game *GameSession) DrawBatch(game_id []*big.Int, order_id []*big.Int, seed []string, amount []*big.Int, hash_expired []bool) (*types.Transaction, error) {
+	return _Game.Contract.DrawBatch(&_Game.TransactOpts, game_id, order_id, seed, amount, hash_expired)
 }
 
 // DrawBatch is a paid mutator transaction binding the contract method 0xaaeddeaa.
 //
-// Solidity: function draw_batch(uint256[] game_id, uint256[] order_id, string[] seed, uint256[] rate, bool[] hash_expired) returns()
-func (_Game *GameTransactorSession) DrawBatch(game_id []*big.Int, order_id []*big.Int, seed []string, rate []*big.Int, hash_expired []bool) (*types.Transaction, error) {
-	return _Game.Contract.DrawBatch(&_Game.TransactOpts, game_id, order_id, seed, rate, hash_expired)
+// Solidity: function draw_batch(uint256[] game_id, uint256[] order_id, string[] seed, uint256[] amount, bool[] hash_expired) returns()
+func (_Game *GameTransactorSession) DrawBatch(game_id []*big.Int, order_id []*big.Int, seed []string, amount []*big.Int, hash_expired []bool) (*types.Transaction, error) {
+	return _Game.Contract.DrawBatch(&_Game.TransactOpts, game_id, order_id, seed, amount, hash_expired)
 }
 
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.

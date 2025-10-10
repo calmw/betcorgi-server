@@ -5,14 +5,15 @@ import (
 	"betcorgi/pkg/event"
 	"context"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/status-im/keycard-go/hexutils"
 	"log"
 	"math/big"
 	"strings"
 	"time"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/status-im/keycard-go/hexutils"
 )
 
 type Order struct {
@@ -116,12 +117,11 @@ func (c Order) GetLog(startHeight, endHeight *big.Int) {
 
 func (c Order) OrderInit() {
 	c.AdminSetEnv()
-	c.AddAccess()
+	c.AddAccess(AdminRole, ChainConfig.GameContractAddress)
 }
 
-func (c Order) AddAccess() {
-	AdminRole := "a49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775"
-	AdminRoleBytes := hexutils.HexToBytes(AdminRole)
+func (c Order) AddAccess(role, account string) {
+	roleBytes := hexutils.HexToBytes(role)
 
 	var res *types.Transaction
 
@@ -131,7 +131,7 @@ func (c Order) AddAccess() {
 			log.Println(err)
 			return
 		}
-		res, err = c.Contract.GrantRole(txOpts, [32]byte(AdminRoleBytes), common.HexToAddress(ChainConfig.GameContractAddress))
+		res, err = c.Contract.GrantRole(txOpts, [32]byte(roleBytes), common.HexToAddress(account))
 		if err == nil {
 			break
 		}

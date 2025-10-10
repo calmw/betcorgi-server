@@ -5,38 +5,32 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 	"math/big"
 	"reflect"
 	"strings"
+
+	"github.com/ethereum/go-ethereum/accounts/abi"
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-// 1 用户定位事件处理，2 城市先锋奖励事件，3增加充值事件，4获取新增质押事件，5获取奖励领取事件
 const (
-	LocationEvent = iota + 1
-	RewardEvent
-	RechargeEvent
-	DelegateEvent
-	WithdrawEvent
-	LocationEvent2
-	SuretyRecordEvent
+	LayoutTime = "2006-01-02 15:04:05"
+	AdminRole  = "a49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775"
+	ServerRole = "a8a7bc421f721cb936ea99efdad79237e6ee0b871a2a08cf648691f9584cdc77"
+	ManageRole = "a8a7bc421f721cb936ea99efdad79237e6ee0b871a2a08cf648691f9584cdc77"
 )
-const LayoutTime = "2006-01-02 15:04:05"
 
 type ChainConfigs struct {
 	ChainId                     int64
 	RPC                         string
 	GameContractAddress         string
 	GameCategoryContractAddress string
-	FeeContractAddress          string
 	OrderContractAddress        string
 	TokenContractAddress        string
 	AutoBetContractAddress      string
-	JackPotContractAddress      string
 	USDTAddress                 string
 	USDCAddress                 string
 	PrivateKey                  string
@@ -93,7 +87,7 @@ func GetAuth(cli *ethclient.Client) (*bind.TransactOpts, error) {
 		maxFeePerGas = new(big.Int).Add(head.BaseFee, gasTipCap)
 		maxFeePerGas = new(big.Int).Mul(maxFeePerGas, big.NewInt(7))
 		maxFeePerGas = new(big.Int).Div(maxFeePerGas, big.NewInt(5))
-		fmt.Println(fmt.Sprintf("BaseFee:%v,GasTipCap:%v，maxFeePerGas：%v", head.BaseFee.Int64(), gasTipCap.Int64(), maxFeePerGas.Int64()))
+		//fmt.Println(fmt.Sprintf("BaseFee:%v,GasTipCap:%v，maxFeePerGas：%v", head.BaseFee.Int64(), gasTipCap.Int64(), maxFeePerGas.Int64()))
 	}
 
 	return &bind.TransactOpts{
