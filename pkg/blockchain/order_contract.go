@@ -116,6 +116,7 @@ func (c Order) GetLog(startHeight, endHeight *big.Int) {
 }
 
 func (c Order) OrderInit() {
+	fmt.Println("OrderInit 开始")
 	c.AdminSetEnv()
 	c.AddAccess(AdminRole, ChainConfig.GameContractAddress)
 }

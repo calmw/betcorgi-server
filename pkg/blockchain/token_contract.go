@@ -44,6 +44,7 @@ func NewToken() (*Token, error) {
 }
 
 func (c Token) TokenInit() {
+	fmt.Println("TokenInit 开始")
 	prvKey, err := crypto.HexToECDSA(ChainConfig.PrivateKey)
 	if err != nil {
 		fmt.Println(err)

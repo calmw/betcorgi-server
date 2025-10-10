@@ -10,7 +10,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/status-im/keycard-go/hexutils"
 )
 
 type Category struct {
@@ -39,7 +41,44 @@ func NewGameCategory() (*GameCategory, error) {
 }
 
 func (c GameCategory) GameCategoryInit() {
+	fmt.Println("GameCategoryInit 开始")
+	prvKey, err := crypto.HexToECDSA(ChainConfig.PrivateKey)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	address := crypto.PubkeyToAddress(prvKey.PublicKey)
+	c.AddAccess(AdminRole, address.String())
 	c.AdminSetGameCategory()
+}
+
+func (c GameCategory) AddAccess(role, account string) {
+	roleBytes := hexutils.HexToBytes(role)
+
+	var res *types.Transaction
+
+	for {
+		txOpts, err := GetAuth(c.Cli)
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		res, err = c.Contract.GrantRole(txOpts, [32]byte(roleBytes), common.HexToAddress(account))
+		if err == nil {
+			break
+		}
+		time.Sleep(3 * time.Second)
+	}
+	log.Println(fmt.Sprintf("成功"))
+	for {
+		receipt, err := c.Cli.TransactionReceipt(context.Background(), res.Hash())
+		if err == nil && receipt.Status == 1 {
+			break
+		}
+		time.Sleep(time.Second * 2)
+	}
+
+	log.Println(fmt.Sprintf("确认成功"))
 }
 
 func (c GameCategory) AdminSetGameCategory() {
@@ -142,6 +181,7 @@ func (c GameCategory) SetGameCategory(category Category) {
 		if err == nil {
 			break
 		}
+		fmt.Println(err)
 		time.Sleep(3 * time.Second)
 	}
 

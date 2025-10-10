@@ -40,7 +40,9 @@ func NewGame() (*Game, error) {
 }
 
 func (c Game) GameInit() {
+	fmt.Println("GameInit 开始")
 	c.AddAccess()
+	c.AdminSetBetSwitch()
 	c.AdminSetEnv(
 		ChainConfig.TokenContractAddress,
 		ChainConfig.OrderContractAddress,
@@ -51,7 +53,6 @@ func (c Game) GameInit() {
 }
 
 func (c Game) AddAccess() {
-	AdminRole := "a49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775"
 	AdminRoleBytes := hexutils.HexToBytes(AdminRole)
 
 	var res *types.Transaction

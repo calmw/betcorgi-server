@@ -4,13 +4,14 @@ import (
 	"betcorgi/pkg/binding/corgi"
 	"context"
 	"fmt"
+	"log"
+	"math/big"
+	"time"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/status-im/keycard-go/hexutils"
-	"log"
-	"math/big"
-	"time"
 )
 
 type AutoBet struct {
@@ -34,12 +35,12 @@ func NewAutoBet() (*AutoBet, error) {
 }
 
 func (c AutoBet) AutoBetInit() {
+	fmt.Println("AutoBetInit 开始")
 	c.AdminSetEnv(false) // 默认关闭了自动下注
 	c.AddAccess()
 }
 
 func (c AutoBet) AddAccess() {
-	AdminRole := "a49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775"
 	AdminRoleBytes := hexutils.HexToBytes(AdminRole)
 
 	var res *types.Transaction
