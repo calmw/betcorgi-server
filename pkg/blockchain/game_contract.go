@@ -229,7 +229,7 @@ func (c Game) AutoDraw(gameId int64, seed []string, rate []*big.Int, hashExpired
 	log.Println(fmt.Sprintf("确认成功"))
 }
 
-func (c Game) Bet(gameId, tokenId, amount int64, hash, data string) {
+func (c Game) Bet(gameId, tokenId int64, amount *big.Int, hash, data string) {
 	var err error
 	var hashBytes []byte
 	var res *types.Transaction
@@ -241,7 +241,7 @@ func (c Game) Bet(gameId, tokenId, amount int64, hash, data string) {
 		if tokenId > 0 {
 			txOpts, err = GetAuth(c.Cli)
 		} else {
-			txOpts, err = GetAuthWithValue(c.Cli, big.NewInt(amount))
+			txOpts, err = GetAuthWithValue(c.Cli, amount)
 		}
 		if err != nil {
 			log.Println(err)
@@ -249,14 +249,14 @@ func (c Game) Bet(gameId, tokenId, amount int64, hash, data string) {
 		}
 		fmt.Println(fmt.Sprintf("gameId:%d", big.NewInt(gameId)))
 		fmt.Println(fmt.Sprintf("tokenId:%d", big.NewInt(tokenId)))
-		fmt.Println(fmt.Sprintf("amount:%d", big.NewInt(amount)))
+		fmt.Println(fmt.Sprintf("amount:%v", amount))
 		fmt.Println(fmt.Sprintf("hash:0x%s", hexutils.BytesToHex(hashBytes)))
 		fmt.Println(fmt.Sprintf("data:%s", data))
 		res, err = c.Contract.Bet(
 			txOpts,
 			big.NewInt(gameId),
 			big.NewInt(tokenId),
-			big.NewInt(amount),
+			amount,
 			[32]byte(hashBytes),
 			hexutils.HexToBytes(strings.TrimPrefix(data, "0x")),
 		)
@@ -354,7 +354,7 @@ func generateRandomHexString() [32]byte {
 	return randomBytes
 }
 
-func (c Game) BetTest(gameId, tokenId, amount int64, dataHex string) {
+func (c Game) BetTest(gameId, tokenId int64, amount *big.Int, dataHex string) {
 	order, _ := NewOrder()
 	orderId := order.GetNewOrderId().Int64()
 	for i := 0; i < 5; i++ {
@@ -384,7 +384,7 @@ func (c Game) BetTest(gameId, tokenId, amount int64, dataHex string) {
 	}
 }
 
-func (c Game) BetSingle(gameId, tokenId, amount int64, hashStr, dataHex string) {
+func (c Game) BetSingle(gameId, tokenId int64, amount *big.Int, hashStr, dataHex string) {
 	order, _ := NewOrder()
 	orderId := order.GetNewOrderId().Int64()
 	c.Bet(

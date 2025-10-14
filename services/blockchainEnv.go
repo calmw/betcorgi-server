@@ -11,7 +11,7 @@ func InitTestnetEnv() {
 	blockchain.ChainConfig = blockchain.ChainConfigs{
 		ChainId:                     421614,
 		RPC:                         "https://arbitrum-sepolia.gateway.tenderly.co",
-		GameContractAddress:         "0x488E99021792BC7b72AFd56CBaB30b09D6892DAA",
+		GameContractAddress:         "0x0f618aEad952d298444cFcF8683a7f3Df63B3598",
 		GameCategoryContractAddress: "0x9fD4951e888C5de9D75320704E868296Eeb0adE7",
 		OrderContractAddress:        "0xE12f247e633Fb773c7387a3266F1f9F287E1a069",
 		TokenContractAddress:        "0xd6c44AA3A5503479E2C1248e462aD2eF9EB7Ac19",
