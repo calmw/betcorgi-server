@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	drawAddress := "0xd03dAb0306927cc1eFB8F2254a9ddA288b38113D"
 	//services.InitBaseTestnetEnv()
 	services.InitTestnetEnv()
 
@@ -47,7 +48,7 @@ func main() {
 	}
 	//game.AutoBetTest()
 	//game.AdminSetBetSwitch()
-	//game.GameInit()
+	game.GameInit(drawAddress)
 
 	//game.BindParent("0x37225753153de1241Bc8846A1c816453B0Bfa3f1")
 	//game.BetTest(16, 1, 1000000)

@@ -40,7 +40,7 @@ func NewGame() (*Game, error) {
 	}, nil
 }
 
-func (c Game) GameInit() {
+func (c Game) GameInit(drawAddress string) {
 	fmt.Println("GameInit 开始")
 	prvKey, err := crypto.HexToECDSA(ChainConfig.PrivateKey)
 	if err != nil {
@@ -48,6 +48,7 @@ func (c Game) GameInit() {
 		return
 	}
 	address := crypto.PubkeyToAddress(prvKey.PublicKey)
+	c.GrantRole(ServerRole, drawAddress)
 	c.GrantRole(ServerRole, address.String())
 	c.GrantRole(AdminRole, ChainConfig.OrderContractAddress)
 	c.GrantRole(AdminRole, ChainConfig.AutoBetContractAddress)
